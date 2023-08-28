@@ -30,7 +30,7 @@ body {
     }
 }
 
-.consol_div {
+.logger {
     $bg: rgb(16, 17, 17);
     @include flex();
     @include box(310px, 150px, 8px);

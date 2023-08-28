@@ -1,8 +1,8 @@
 const wrapper = document.querySelector(".wrapper");
 
-const canvas_botm = document.querySelector("#bot_canvas"),
+const bot_canvas = document.querySelector("#bot_canvas"),
+	botext = bot_canvas.getContext("2d"),
 	top_canvas = document.querySelector("#top_canvas"),
-	bottext = canvas_botm.getContext("2d"),
 	topext = top_canvas.getContext("2d");
 
 const canvas_siz = 400,
@@ -18,10 +18,10 @@ wrapper.setAttribute(
 
 top_canvas.width =
 	top_canvas.height =
-	canvas_botm.width =
-	canvas_botm.height =
+	bot_canvas.width =
+	bot_canvas.height =
 		canvas_siz + dot_siz + padding * 2;
 
-bottext.font = `normal ${cell_size - 32}pt Cascadia Code`;
+botext.font = `normal ${cell_size - 32}pt Cascadia Code`;
 
 drawGrid();

@@ -1,4 +1,5 @@
 const c = [];
+
 for (let i = 0; i < cell_no; i++) {
 	c[i] = i;
 }
@@ -8,8 +9,9 @@ const start = {
 	y: randomElementFromArray(c),
 };
 
-drawCell(start.x, start.y);
-const bad_cells = [start];
+pickRandCell(start.x, start.y);
+
+const bad_cells = [];
 
 const containsCell = (obj_array, obj) => {
 	for (let i = 0; i < obj_array.length; i++) {

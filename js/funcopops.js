@@ -2,9 +2,9 @@ const randomElementFromArray = (arr) => {
 	return arr[Math.floor(Math.random() * arr.length)];
 };
 
-const drawCell = (i, j) => {
+const pickRandCell = (i, j) => {
 	topext.fillStyle = "#000";
-	bottext.fillRect(
+	botext.fillRect(
 		i * cell_size + padding,
 		j * cell_size + padding,
 		cell_size + dot_siz,
@@ -17,12 +17,12 @@ const drawCell = (i, j) => {
 };
 
 const drawGrid = () => {
-	bottext.clearRect(0, 0, canvas_botm.width, canvas_botm.height);
-	bottext.fillStyle = "#000";
+	botext.clearRect(0, 0, bot_canvas.width, bot_canvas.height);
+	botext.fillStyle = "#000";
 
 	for (let i = 0; i <= cell_no; i++) {
 		for (let j = 0; j <= cell_no; j++) {
-			bottext.fillRect(
+			botext.fillRect(
 				i * cell_size + padding,
 				j * cell_size + padding,
 				dot_siz,
@@ -34,7 +34,7 @@ const drawGrid = () => {
 // if (j < cell_no && i < cell_no && grid_matrix[j][i] > 0) {
 // start.x1 = i * cell_size + padding;
 // start.y1 = j * cell_size + padding;
-// bottext.fillText(
+// botext.fillText(
 // `${grid_matrix[j][i]}`,
 // i * cell_size + cell_size / 2 - 5 + padding,
 // j * cell_size + cell_size / 2 + 10 + padding
