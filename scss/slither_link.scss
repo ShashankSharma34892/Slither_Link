@@ -1,0 +1,52 @@
+@use "../../utils/scss/base/reset";
+@use "../../utils/scss/helpers" as *;
+
+
+body {
+    @include flex();
+    font-family: "Inconsolata";
+    font-size: .9rem;
+    letter-spacing: .05em;
+    line-height: 2em;
+    background-color: rgb(37, 37, 41);
+}
+
+.wrapper {
+    $wrapper_bg: rgb(46, 160, 149);
+    @include flex();
+
+    border-radius: 4px;
+    position: relative;
+    background-color: $wrapper_bg;
+
+    #bot_canvas {
+        outline: solid 3px;
+        position: absolute;
+    }
+
+    #top_canvas {
+        z-index: 69;
+        isolation: isolate;
+    }
+}
+
+.consol_div {
+    $bg: rgb(16, 17, 17);
+    @include flex();
+    @include box(310px, 150px, 8px);
+
+    margin-top: 50px;
+    background-color: $bg;
+    color: rgb(84, 201, 201);
+    box-shadow: 0px 0px 4px 1px black inset;
+
+    pre {
+        padding: 10px 30px;
+        border-radius: 7px;
+        background-color: lighten($bg, 3);
+    }
+
+    pre:not(:first-child) {
+        margin-top: 15px;
+    }
+}
