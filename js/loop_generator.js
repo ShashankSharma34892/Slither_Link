@@ -1,37 +1,37 @@
-const c = [];
-
-for (let i = 0; i < cell_no; i++) {
-	c[i] = i;
-}
-
-const start = {
-	x: randomElementFromArray(c),
-	y: randomElementFromArray(c),
+const starting_cell = {
+	x: randomElementFromArray(coord),
+	y: randomElementFromArray(coord),
 };
-
-pickRandCell(start.x, start.y);
-
 const bad_cells = [];
 
-const containsCell = (obj_array, obj) => {
+const possible_moves = [
+	[0, -1], // up
+	[+1, 0], // right
+	[0, +1], // down
+	[-1, 0], // left
+];
+
+const cells = [
+	[1, 1, 1, 1, 1, 1, 1],
+	[1, 1, 1, 1, 1, 1, 1],
+	[1, 1, 1, 1, 1, 1, 1],
+	[1, 1, 1, 1, 1, 1, 1],
+	[1, 1, 1, 1, 1, 1, 1],
+	[1, 1, 1, 1, 1, 1, 1],
+	[1, 1, 1, 1, 1, 1, 1],
+];
+
+function containsCell(obj_array, obj) {
 	for (let i = 0; i < obj_array.length; i++) {
 		if (obj.x === obj_array[i].x && obj.y === obj_array[i].y) {
 			return true;
 		}
 	}
 	return false;
-};
-
-const traceLoop = (pre_cell) => {
-	const possible_moves = [
-		[0, -1], // up
-		[+1, 0], // right
-		[0, +1], // down
-		[-1, 0], // left
-	];
+}
+function traceLoop(pre_cell) {
 	let cell = { x: pre_cell.x, y: pre_cell.y };
-	let directions = [0, 1, 2, 3],
-		m;
+	let directions = [0, 1, 2, 3];
 
 	if (
 		cell.y - 1 < 0 ||
@@ -58,7 +58,7 @@ const traceLoop = (pre_cell) => {
 		directions.splice(directions.indexOf(3), 1);
 	}
 
-	m = randomElementFromArray(directions);
+	let m = randomElementFromArray(directions);
 	if (m === undefined) {
 		return 0;
 	}
@@ -68,12 +68,13 @@ const traceLoop = (pre_cell) => {
 	drawCell(cell.x, cell.y);
 	bad_cells.push(cell);
 
-	if (cell.x != start.x || cell.y != start.y) {
+	if (cell.x != starting_cell.x || cell.y != starting_cell.y) {
 		let fail = traceLoop(cell);
 		if (fail) {
 			traceLoop(bad_cells[bad_cells.length - 1]);
 		}
 	}
-};
+}
 
-// traceLoop(start);
+// drawCell(starting_cell.x, starting_cell.y);
+// createGoodIslands();

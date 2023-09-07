@@ -1,6 +1,5 @@
-@use "../../utils/scss/base/reset";
-@use "../../utils/scss/helpers" as *;
-
+@use "../../_utils/scss/base/reset";
+@use "../../_utils/scss/helpers" as *;
 
 body {
     @include flex();
@@ -33,7 +32,7 @@ body {
 .logger {
     $bg: rgb(16, 17, 17);
     @include flex();
-    @include box(310px, 150px, 8px);
+    @include dimensions(310px, 150px, 8px);
 
     margin-top: 50px;
     background-color: $bg;

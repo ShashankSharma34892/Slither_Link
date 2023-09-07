@@ -1,22 +1,18 @@
-const randomElementFromArray = (arr) => {
+function randomElementFromArray(arr) {
 	return arr[Math.floor(Math.random() * arr.length)];
-};
+}
 
-const pickRandCell = (i, j) => {
-	topext.fillStyle = "#000";
-	botext.fillRect(
-		i * cell_size + padding,
-		j * cell_size + padding,
-		cell_size + dot_siz,
-		cell_size + dot_siz
-		// i * cell_size + padding + dot_siz,
-		// j * cell_size + padding + dot_siz,
-		// cell_size - dot_siz,
-		// cell_size - dot_siz
+function clearCell(cell) {
+	// topext.fillStyle = "black";
+	topext.clearRect(
+		cell.x * cell_size + padding,
+		cell.y * cell_size + padding,
+		cell_size,
+		cell_size
 	);
-};
+}
 
-const drawGrid = () => {
+function drawGridDots() {
 	botext.clearRect(0, 0, bot_canvas.width, bot_canvas.height);
 	botext.fillStyle = "#000";
 
@@ -30,18 +26,9 @@ const drawGrid = () => {
 			);
 		}
 	}
-};
-// if (j < cell_no && i < cell_no && grid_matrix[j][i] > 0) {
-// start.x1 = i * cell_size + padding;
-// start.y1 = j * cell_size + padding;
-// botext.fillText(
-// `${grid_matrix[j][i]}`,
-// i * cell_size + cell_size / 2 - 5 + padding,
-// j * cell_size + cell_size / 2 + 10 + padding
-// );
-// }
+}
 
-const getLine = (coords) => {
+function getLine(coords) {
 	// good luck understanding any of this shit lmoa
 
 	const cell_points = {
@@ -87,9 +74,9 @@ const getLine = (coords) => {
 			};
 		}
 	}
-};
+}
 
-const containsLine = (obj_array, obj) => {
+function containsLine(obj_array, obj) {
 	for (let i = 0; i < obj_array.length; i++) {
 		if (
 			obj.x === obj_array[i].x &&
@@ -100,46 +87,42 @@ const containsLine = (obj_array, obj) => {
 			return i;
 	}
 	return -1;
-};
+}
 
-const getImgCoords = () => {
+function getImgCoords(x, y, width, height) {
 	return {
 		x:
-			click_line.width > click_line.height
-				? click_line.x + click_line.width / 2 - img_width / 2
-				: click_line.x - img_height / 2 + dot_siz / 2,
+			width > height
+				? x + width / 2 - img_width / 2
+				: x - img_height / 2 + dot_siz / 2,
 		y:
-			click_line.width > click_line.height
-				? click_line.y - img_width / 2 + dot_siz / 2
-				: click_line.y + click_line.height / 2 - img_height / 2,
+			width > height
+				? y - img_width / 2 + dot_siz / 2
+				: y + height / 2 - img_height / 2,
 	};
-};
+}
 
-const drawHoverLine = () => {
+function drawHoverLine(line) {
 	topext.fillStyle = "rgba(1, 218, 196, 0.8)";
-	topext.fillRect(hov_line.x, hov_line.y, hov_line.width, hov_line.height);
-};
+	topext.fillRect(line.x, line.y, line.width, line.height);
+}
 
-const drawLine = () => {
+function drawLine(line) {
 	topext.fillStyle = "black";
-	topext.fillRect(
-		click_line.x,
-		click_line.y,
-		click_line.width,
-		click_line.height
-	);
-};
+	topext.fillRect(line.x, line.y, line.width, line.height);
+}
 
-const clearLine = (line) => {
+function clearLine(line) {
 	if (line) {
 		topext.clearRect(line.x, line.y, line.width, line.height);
 	}
-};
+}
 
-const drawCross = () => {
-	topext.drawImage(img, img_coords.x, img_coords.y, img_width, img_height);
-};
-
-const clearCross = () => {
-	topext.clearRect(img_coords.x, img_coords.y, img_width, img_height);
-};
+function contains(obj_array, obj) {
+	for (let i = 0; i < obj_array.length; i++) {
+		if (obj.x === obj_array[i].x && obj.y === obj_array[i].y) {
+			return i;
+		}
+	}
+	return -1;
+}
