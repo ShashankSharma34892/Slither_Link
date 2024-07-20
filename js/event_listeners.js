@@ -1,4 +1,4 @@
-const IMG_CROSS = new Image(14, 14)
+const IMG_CROSS = new Image()
 const CROSS_WIDTH = 15
 const CROSS_HEIGHT = 14
 IMG_CROSS.src = "../img/thicc_x.png"
