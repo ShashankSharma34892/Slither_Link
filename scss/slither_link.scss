@@ -4,26 +4,26 @@
 body {
     @include flex();
     font-family: "Inconsolata";
-    font-size: .9rem;
-    letter-spacing: .05em;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
     line-height: 2em;
     background-color: rgb(37, 37, 41);
 }
 
-.wrapper {
-    $wrapper_bg: rgb(46, 160, 149);
+.daddy {
+    $daddy_bg: rgb(46, 160, 149);
     @include flex();
 
     border-radius: 4px;
     position: relative;
-    background-color: $wrapper_bg;
+    background-color: $daddy_bg;
 
-    #bot_canvas {
+    #botCanvas {
         outline: solid 3px;
         position: absolute;
     }
 
-    #top_canvas {
+    #topCanvas {
         z-index: 69;
         isolation: isolate;
     }
